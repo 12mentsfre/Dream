@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wourd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wourd
+  template:
+    metadata:
+      labels:
+        app: wourd
+    spec:
+      containers:
+      - image: okteto.dev/wourd:latest
+        name: wourd
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: AUUID
+          value: "956db991-1934-49d3-8304-1e598eab6a85"
